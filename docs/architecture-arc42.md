@@ -21,140 +21,40 @@ concepts. For documentation of your own system you use better the
 
 # Introduction and Goals
 
-Describes the relevant requirements and the driving forces that software
-architects and development team must consider. These include
+This project is an effort of establishing a development workflow via practical product development.
 
--   underlying business goals,
+There are two main requirements for the project:
 
--   essential features,
+- The product should be a working and entertaining for a cat autonomous toy.
+- Components, processes and libraries of the project must be developed to be reusable in other projects.
 
--   essential functional requirements,
+The project is based on the following principles:
 
--   quality goals for the architecture and
-
--   relevant stakeholders and their expectations
-
-## Requirements Overview
-
-<div class="formalpara-title">
-
-**Contents**
-
-</div>
-
-Short description of the functional requirements, driving forces,
-extract (or abstract) of requirements. Link to (hopefully existing)
-requirements documents (with version number and information where to
-find it).
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-From the point of view of the end users a system is created or modified
-to improve support of a business activity and/or improve the quality.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Short textual description, probably in tabular use-case format. If
-requirements documents exist this overview should refer to these
-documents.
-
-Keep these excerpts as short as possible. Balance readability of this
-document with potential redundancy w.r.t to requirements documents.
-
-See [Introduction and Goals](https://docs.arc42.org/section-1/) in the
-arc42 documentation.
+1. **Architecture-oriented**
+    - Develop the right architecture using architectural best practices
+2. **Result-oriented and minimalistic**
+    - Progress over perfection
+3. **Integration-oriented**
+    - Reusing existing libraries, projects, etc. Minimum development of individual pieces
+4. **Reusable in my other projects**
+    - It should be done automatically with a good architecture. But I want to make several special decisions to make the project easy to transfer to my another robotic project.
 
 ## Quality Goals
 
-<div class="formalpara-title">
-
-**Contents**
-
-</div>
-
-The top three (max five) quality goals for the architecture whose
-fulfillment is of highest importance to the major stakeholders. We
-really mean quality goals for the architecture. Don’t confuse them with
-project goals. They are not necessarily identical.
-
-Consider this overview of potential topics (based upon the ISO 25010
-standard):
-
-![Categories of Quality
-Requirements](architecture-arc42/01_2_iso-25010-topics-EN.drawio.png)
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-You should know the quality goals of your most important stakeholders,
-since they will influence fundamental architectural decisions. Make sure
-to be very concrete about these qualities, avoid buzzwords. If you as an
-architect do not know how the quality of your work will be judged…
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-A table with quality goals and concrete scenarios, ordered by priorities
+| No | Quality | Motivation |
+|----|----------|----------|
+|1| Cat Friendliness | The product should be interesting and attractive for a cat|
+|2| Safety | The product should be safe for pets, it should not harm the pet in any way|
+| 3 |Devellopment Reusability|The project components should be easy to reuse in other projects. Especially in my ouw projects|
 
 ## Stakeholders
 
-<div class="formalpara-title">
-
-**Contents**
-
-</div>
-
-Explicit overview of stakeholders of the system, i.e. all person, roles
-or organizations that
-
--   should know the architecture
-
--   have to be convinced of the architecture
-
--   have to work with the architecture or with code
-
--   need the documentation of the architecture for their work
-
--   have to come up with decisions about the system or its development
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-You should know all parties involved in development of the system or
-affected by the system. Otherwise, you may get nasty surprises later in
-the development process. These stakeholders determine the extent and the
-level of detail of your work and its results.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Table with role names, person names, and their expectations with respect
-to the architecture and its documentation.
-
-| Role/Name   | Contact        | Expectations       |
-|-------------|----------------|--------------------|
-| *\<Role-1>* | *\<Contact-1>* | *\<Expectation-1>* |
-| *\<Role-2>* | *\<Contact-2>* | *\<Expectation-2>* |
+| Role/Name   | Expectations       |
+|-------------|--------------------|
+| Cats (especially Bastet) | The cats should get a simple funny toy that is able to entertain them |
+| Developers | Developers must get an polished transparent quality product that can be reused or valuable from the education point of view |
+| Andrei Gramakov| I suppose to do two things at once: 1. improve my architect skills, 2. move my another enormously big robotic project.|
+| Potential employers of Andrei Gramakov | Should get an allustrative entry in my portfolio to better understand my skills and experience.|
 
 # Architecture Constraints
 
