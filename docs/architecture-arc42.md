@@ -1,4 +1,4 @@
-# 
+# High-level Architecture Documentation
 
 **About arc42**
 
@@ -19,7 +19,7 @@ concepts. For documentation of your own system you use better the
 
 </div>
 
-# Introduction and Goals
+## Introduction and Goals
 
 This project is an effort of establishing a development workflow via practical product development.
 
@@ -39,61 +39,38 @@ The project is based on the following principles:
 4. **Reusable in my other projects**
     - It should be done automatically with a good architecture. But I want to make several special decisions to make the project easy to transfer to my another robotic project.
 
-## Quality Goals
+### Quality Goals
 
-| No | Quality | Motivation |
-|----|----------|----------|
-|1| Cat Friendliness | The product should be interesting and attractive for a cat|
-|2| Safety | The product should be safe for pets, it should not harm the pet in any way|
-| 3 |Devellopment Reusability|The project components should be easy to reuse in other projects. Especially in my ouw projects|
+| No | Quality                  | Motivation                                                                                      |
+|----|--------------------------|-------------------------------------------------------------------------------------------------|
+| 1  | Cat Friendliness         | The product should be interesting and attractive for a cat                                      |
+| 2  | Safety                   | The product should be safe for pets, it should not harm the pet in any way                      |
+| 3  | Devellopment Reusability | The project components should be easy to reuse in other projects. Especially in my ouw projects |
 
-## Stakeholders
+### Stakeholders
 
-| Role/Name   | Expectations       |
-|-------------|--------------------|
-| Cats (especially Bastet) | The cats should get a simple funny toy that is able to entertain them |
-| Developers | Developers must get an polished transparent quality product that can be reused or valuable from the education point of view |
-| Andrei Gramakov| I suppose to do two things at once: 1. improve my architect skills, 2. move my another enormously big robotic project.|
-| Potential employers of Andrei Gramakov | Should get an allustrative entry in my portfolio to better understand my skills and experience.|
+| Role/Name                              | Expectations                                                                                                                |
+|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Cats (especially Bastet)               | The cats should get a simple funny toy that is able to entertain them                                                       |
+| Developers                             | Developers must get an polished transparent quality product that can be reused or valuable from the education point of view |
+| Andrei Gramakov                        | I suppose to do two things at once: 1. improve my architect skills, 2. move my another enormously big robotic project.      |
+| Potential employers of Andrei Gramakov | Should get an allustrative entry in my portfolio to better understand my skills and experience.                             |
 
-# Architecture Constraints
+## Architecture Constraints
 
-<div class="formalpara-title">
+Software:
 
-**Contents**
+- Should follow the Clean Architecture principles
+- Should be modular and reusable
+- Hardware details should go to the thin last layer
+- Most of the development should be done platform-independent.
+- Movement logic should be easy detachable of the application logic - to be able to use it in other projects
 
-</div>
+Hardware:
 
-Any requirement that constraints software architects in their freedom of
-design and implementation decisions or decision about the development
-process. These constraints sometimes go beyond individual systems and
-are valid for whole organizations and companies.
+- Motors must be quite
 
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Architects should know exactly where they are free in their design
-decisions and where they must adhere to constraints. Constraints must
-always be dealt with; they may be negotiable, though.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Simple tables of constraints with explanations. If needed you can
-subdivide them into technical constraints, organizational and political
-constraints and conventions (e.g. programming or versioning guidelines,
-documentation or naming conventions)
-
-See [Architecture Constraints](https://docs.arc42.org/section-2/) in the
-arc42 documentation.
-
-# System Scope and Context
+## System Scope and Context
 
 <div class="formalpara-title">
 
@@ -358,8 +335,8 @@ name and responsibility according to the following schema:
 
 | **Name**         | **Responsibility** |
 |------------------|--------------------|
-| *\<black box 1>* |  *\<Text>*         |
-| *\<black box 2>* |  *\<Text>*         |
+| *\<black box 1>* | *\<Text>*          |
+| *\<black box 2>* | *\<Text>*          |
 
 If you use a list of black box descriptions then you fill in a separate
 black box template for every important building block . Its headline is
