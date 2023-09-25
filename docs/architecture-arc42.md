@@ -72,168 +72,45 @@ Hardware:
 
 ## System Scope and Context
 
-<div class="formalpara-title">
+### Business Context
 
-**Contents**
+The business context is represented by a UML use case diagram.
 
-</div>
+Communication partners:
+- Cat
+- Cat owner
+- Developers
 
-System scope and context - as the name suggests - delimits your system
-(i.e. your scope) from all its communication partners (neighboring
-systems and users, i.e. the context of your system). It thereby
-specifies the external interfaces.
+![usecase](architecture-arc42/usecase.drawio.svg)
 
-If necessary, differentiate the business context (domain specific inputs
-and outputs) from the technical context (channels, protocols, hardware).
 
-<div class="formalpara-title">
+### Technical Context
 
-**Motivation**
+The technical context is represented by a UML deployment diagram.
 
-</div>
+![deployment](architecture-arc42/deployment.drawio.svg)
 
-The domain interfaces and technical interfaces to communication partners
-are among your system’s most critical aspects. Make sure that you
-completely understand them.
+## Solution Strategy
 
-<div class="formalpara-title">
+### 1. Physical Transportation System is a separate physical component
 
-**Form**
+**Solution approach**. The System can be considered as a separate device accepting commands from the main controller via a CANbus protocol.
 
-</div>
+### 2. Physical Transportation System is an independent and unit-tested piece of software. The rest of the system is tested via integration or black-box tests
 
-Various options:
+**Solution approach**. It has a separate location with it's own file structure - src, include, test, etc. Unit testing is done only for the Physical Transportation System.
 
--   Context diagrams
+### 3. Cat Interaction Logic is isolated from the main app
 
--   Lists of communication partners and their interfaces.
+**Solution approach**. Cat Interaction Logic interacts with the main app via an abstract interface. The logic itself is enclosed in an entity, and interacts with the physical components also via an abstract interface.
 
-See [Context and Scope](https://docs.arc42.org/section-3/) in the arc42
-documentation.
+### 4. Besides the drivers, all components are platform-independent
 
-## Business Context
+**Solution approach**. Each components besides the applications should be a separate library.
 
-<div class="formalpara-title">
+### 5. Most of the development is done without involving the hardware
 
-**Contents**
-
-</div>
-
-Specification of **all** communication partners (users, IT-systems, …)
-with explanations of domain specific inputs and outputs or interfaces.
-Optionally you can add domain specific formats or communication
-protocols.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-All stakeholders should understand which data are exchanged with the
-environment of the system.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-All kinds of diagrams that show the system as a black box and specify
-the domain interfaces to communication partners.
-
-Alternatively (or additionally) you can use a table. The title of the
-table is the name of your system, the three columns contain the name of
-the communication partner, the inputs, and the outputs.
-
-**\<Diagram or Table>**
-
-**\<optionally: Explanation of external domain interfaces>**
-
-## Technical Context
-
-<div class="formalpara-title">
-
-**Contents**
-
-</div>
-
-Technical interfaces (channels and transmission media) linking your
-system to its environment. In addition a mapping of domain specific
-input/output to the channels, i.e. an explanation which I/O uses which
-channel.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Many stakeholders make architectural decision based on the technical
-interfaces between the system and its context. Especially infrastructure
-or hardware designers decide these technical interfaces.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels
-and input/output.
-
-**\<Diagram or Table>**
-
-**\<optionally: Explanation of technical interfaces>**
-
-**\<Mapping Input/Output to Channels>**
-
-# Solution Strategy
-
-<div class="formalpara-title">
-
-**Contents**
-
-</div>
-
-A short summary and explanation of the fundamental decisions and
-solution strategies, that shape system architecture. It includes
-
--   technology decisions
-
--   decisions about the top-level decomposition of the system, e.g.
-    usage of an architectural pattern or design pattern
-
--   decisions on how to achieve key quality goals
-
--   relevant organizational decisions, e.g. selecting a development
-    process or delegating certain tasks to third parties.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-These decisions form the cornerstones for your architecture. They are
-the foundation for many other detailed decisions or implementation
-rules.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Keep the explanations of such key decisions short.
-
-Motivate what was decided and why it was decided that way, based upon
-problem statement, quality goals and key constraints. Refer to details
-in the following sections.
-
-See [Solution Strategy](https://docs.arc42.org/section-4/) in the arc42
-documentation.
+**Solution approach**. Drivers should have an abstract interface, and the should have fake implementation of it for the development environment (e.g. a desktop OS).
 
 # Building Block View
 
