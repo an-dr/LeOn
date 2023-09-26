@@ -74,14 +74,14 @@ Hardware:
 
 ### Business Context
 
-The business context is represented by a UML use case diagram.
+The business context is represented by a diagram with all counterparts interacting with the system.
 
 Communication partners:
 - Cat
 - Cat owner
 - Developers
 
-![usecase](architecture-arc42/usecase.drawio.svg)
+![business_ctx](architecture-arc42/business_ctx.drawio.svg)
 
 
 ### Technical Context
