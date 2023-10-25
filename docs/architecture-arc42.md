@@ -124,21 +124,63 @@ Each subsystem represents a separate physical module of the system.
 
 ## Level 2
 
-### White Box: Main Controller
+### White Box: Main Controller Hardware
 
 ![ibd_mc](architecture-arc42/ibd_mc.drawio.svg)
 
-### White Box: Physical Transportation System
+### White Box: Physical Transportation System Hardware
 
 ![ibd_pts](architecture-arc42/ibd_pts.drawio.svg)
 
-### White Box: Cat Interaction Mechanism
+### White Box: Cat Interaction Mechanism Hardware
 
 ![ibd_cim](architecture-arc42/ibd_cim.drawio.svg)
 
-### White Box: Power System
+### White Box: Power System Hardware
 
 ![ibd_cim](architecture-arc42/ibd_ps.drawio.svg)
+
+### White Box: Software
+
+```plantuml
+@startuml Test Diagram
+mainframe Robot Software
+
+package Firmware{
+    [Movement HAL Iml.] as hal_move
+    [Motion HAL Iml.] as hal_motion
+    [Movement Driver] as drv_move
+    [Motion Driver] as drv_motion
+
+}
+
+package Software{
+    [Main Application] as app
+    [Movement Server] as app_move
+    interface "Movement Server Interface" as move_srv_if
+    [Movement Controller] as move
+    [Motion Controller] as motion
+    interface "Movement HAL" as move_if
+    interface "Motion HAL" as motion_if
+}
+
+' Firmware
+[hal_move]-u-( move_if
+[hal_motion]-u-( motion_if
+[hal_move]..>[drv_move]
+[hal_motion]..>[drv_motion]
+
+' Soft
+[app]..>[motion]
+[app]..>[move_srv_if]
+[app_move]..>[move]
+[app_move]..([move_srv_if]
+[move]..>[move_if]
+[motion]..>[motion_if]
+
+@enduml
+```
+
 
 ## Runtime View
 
