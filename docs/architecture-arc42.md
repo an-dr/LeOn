@@ -65,6 +65,7 @@ Software:
 - Hardware details should go to the thin last layer
 - Most of the development should be done platform-independent.
 - Movement logic should be easy detachable of the application logic - to be able to use it in other projects
+- Programming language is C/C++
 
 Hardware:
 
@@ -112,9 +113,9 @@ The technical context is represented by a UML deployment diagram.
 
 **Solution approach**. Drivers should have an abstract interface, and the should have fake implementation of it for the development environment (e.g. a desktop OS).
 
-# Building Block View
+## Building Block View - System
 
-## Level 1 - White Box: Overall System
+### Level 1 - White Box: Overall System
 
 The decomposition of the system splits the system in three subsystems:
 
@@ -122,65 +123,118 @@ The decomposition of the system splits the system in three subsystems:
 
 Each subsystem represents a separate physical module of the system.
 
-## Level 2
+### Level 2
 
-### White Box: Main Controller Hardware
+#### White Box: Main Controller Hardware
 
 ![ibd_mc](architecture-arc42/ibd_mc.drawio.svg)
 
-### White Box: Physical Transportation System Hardware
+#### White Box: Physical Transportation System Hardware
 
 ![ibd_pts](architecture-arc42/ibd_pts.drawio.svg)
 
-### White Box: Cat Interaction Mechanism Hardware
+#### White Box: Cat Interaction Mechanism Hardware
 
 ![ibd_cim](architecture-arc42/ibd_cim.drawio.svg)
 
-### White Box: Power System Hardware
+#### White Box: Power System Hardware
 
 ![ibd_cim](architecture-arc42/ibd_ps.drawio.svg)
 
-### White Box: Software
+## Building Block View - Software
+
+### Level 1 - White Box: Overall System
 
 ```plantuml
 @startuml Test Diagram
 mainframe Robot Software
 
 package Firmware{
-    [Movement HAL Iml.] as hal_move
-    [Motion HAL Iml.] as hal_motion
-    [Movement Driver] as drv_move
-    [Motion Driver] as drv_motion
+    [Movement Driver] as hal_move
+    [Motion Driver] as hal_motion
+    [Movement LL Driver] as drv_move
+    [Motion LL Driver] as drv_motion
 
 }
 
 package Software{
-    [Main Application] as app
-    [Movement Server] as app_move
-    interface "Movement Server Interface" as move_srv_if
-    [Movement Controller] as move
-    [Motion Controller] as motion
+    [HAL]
     interface "Movement HAL" as move_if
     interface "Motion HAL" as motion_if
+    [Main Application] as app
+    [Movement Server] as app_move
+    [Movement Server Interface] as comp_move_srv_if
+    interface move_srv_if
+    [Movement Controller] as move
+    [Motion Controller] as motion
 }
 
 ' Firmware
-[hal_move]-u-( move_if
-[hal_motion]-u-( motion_if
+[hal_move]-u-|> move_if
+[hal_motion]-u-|> motion_if
 [hal_move]..>[drv_move]
 [hal_motion]..>[drv_motion]
 
+' HAL
+[HAL]-[move_if]
+[HAL]-l[motion_if]
+
 ' Soft
 [app]..>[motion]
-[app]..>[move_srv_if]
+[app]--([move_srv_if]
+[app_move]--([move_srv_if]
 [app_move]..>[move]
-[app_move]..([move_srv_if]
-[move]..>[move_if]
-[motion]..>[motion_if]
+[move]..([move_if]
+[motion]..([motion_if]
+[comp_move_srv_if]--[move_srv_if]
 
 @enduml
 ```
+Software:
 
+- **Main Application** - the main application of the system. It is responsible for the overall system control.
+- **HAL** - the hardware abstraction layer. It is responsible for interaction with the hardware drivers
+- **Motion Controller** - the controller responsible for high-level motion control logic (e.g. utilizing different motion modes to build a specific pattern)
+- **Movement Controller** - the controller responsible for high-level movement control logic. E.g. utilizing different movement modes to build a specific pattern on top of the Main Application commands, like shaking, or non-linear movement, user input, supervising, fault mitigation, etc.
+- **Movement Server** - the server responsible for accepting the movement commands from the Main Application and translating them to the Movement HAL commands.
+- **Movement Server Interface** - the interface for communication between the Movement Server and the Main Application.
+
+Firmware:
+
+- **Movement Driver** - the driver utilizing the Low-Level Movement Driver to implement the Movement HAL.
+- **Movement LL Driver** - the low-level driver for the movement hardware (e.g. a step-motor driver)
+- **Motion Driver** - the driver utilizing the Low-Level Motion Driver to implement the Motion HAL.
+- **Motion LL Driver** - the low-level driver for the motion hardware (e.g. a DC motor driver)
+
+#### Interface Specification
+
+In this perspective all interface will be described as a set of functions with partial signatures. If the type is not specified, it is up to the implementation.
+
+##### Movement Server Interface
+
+The interface is similar to ROS's cmd_vel topic. See [ROS cmd_vel](http://wiki.ros.org/cmd_vel).
+
+- `SetVelocity(int X, int Y, int Z, int AngularX, int AngularY, int AngularZ)` - sets the velocity of the robot.
+
+The origin is the center of the robot. The X axis is directed forward, the Y axis is directed to the left, the Z axis is directed up. The angular coordinates are the rotation around the X, Y and Z axes respectively.
+
+#### HAL
+
+Movement HAL:
+
+- `MoveX(int8_t Speed)` - moves the robot forward if the speed is positive, backward if the speed is negative.
+- `MoveY(int8_t Speed)` - moves the robot to the right if the speed is positive, to the left if the speed is negative.
+- `MoveZ(int8_t Speed)` - moves the robot up if the speed is positive, down if the speed is negative.
+
+- `RotateX(int8_t Speed)` - rotates the robot around the X axis clockwise if the speed is positive, counterclockwise if the speed is negative.
+- `RotateY(int8_t Speed)` - rotates the robot around the Y axis clockwise if the speed is positive, counterclockwise if the speed is negative.
+- `RotateZ(int8_t Speed)` - rotates the robot around the Z axis clockwise if the speed is positive, counterclockwise if the speed is negative.
+
+Motion HAL:
+
+- `Start()` - starts the motion
+- `Stop()` - stops the motion
+- `SetMode(Mode mode)` - sets the mode of the motion. The modes are up to implementation. If the mode is not supported, the function should return a non-implemented error.
 
 ## Runtime View
 
