@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+        {
+            "path": "./software/main_controller"
+        }
+    ],
+}
