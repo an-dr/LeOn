@@ -2,13 +2,21 @@
 
 #include <stdio.h>
 
+#include "MotorController.hpp"
+#include "hal/time.hpp"
+
 
 int main(int argc, char *argv[])
 {
-    if (argc > 1) {
-        printf("Hello, %s!\n", argv[1]);
-    } else {
-    printf("Hello!\n");
+    MotorController motor_controller;
+    while(1){
+        motor_controller.MoveForward();
+        motor_controller.MoveLeft(100);
+        Delay(4000);
+        motor_controller.Stop();
+        Delay(1000);
+        motor_controller.MoveRight();
+        Delay(3000);
+        motor_controller.Stop();
     }
-    return 0;
 }

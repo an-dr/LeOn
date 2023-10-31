@@ -12,3 +12,23 @@
 MotorController::MotorController()
 {
 }
+
+void MotorController::MoveForward(uint8_t Speed)
+{
+}
+
+void MotorController::MoveBack(uint8_t Speed)
+{
+}
+
+void MotorController::MoveLeft(uint8_t Speed)
+{
+}
+
+void MotorController::MoveRight(uint8_t Speed)
+{
+}
+
+void MotorController::Stop()
+{
+}

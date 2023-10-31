@@ -2,7 +2,13 @@
 	"folders": [
 		{
 			"path": "."
-		}
+		},
+        {
+            "path": "../..",
+            "name": "Repository Root"
+        }
     ],
-    "settings": {}
+    "settings": {
+        "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+    }
 }

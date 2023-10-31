@@ -12,7 +12,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_STANDARD 14)
-project(app_main)
+project(hal)
 
 
 file(GLOB_RECURSE SRCS_CPP "src/**.cpp")
@@ -24,11 +24,9 @@ set(INCS
    "include"
 )
 
-add_executable(${PROJECT_NAME} src/main.cpp)
-add_subdirectory(hal)
+add_library(${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCS})
 target_sources(${PROJECT_NAME} PUBLIC ${SRCS} )
-target_link_libraries(${PROJECT_NAME} PRIVATE hal)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
