@@ -9,6 +9,9 @@
         }
     ],
     "settings": {
+        "cmake.environment": {
+            "HAL_PLATFORM": "windows"
+        },
         "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
     }
 }

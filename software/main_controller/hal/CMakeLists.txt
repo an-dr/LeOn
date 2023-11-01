@@ -14,19 +14,20 @@ cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_STANDARD 14)
 project(hal)
 
-
-file(GLOB_RECURSE SRCS_CPP "src/**.cpp")
-set(SRCS
-   ${SRCS_CPP}
-)
+message(STATUS "HAL_PLATFORM: $ENV{HAL_PLATFORM}")
+if("$ENV{HAL_PLATFORM}" STREQUAL "windows")
+    include("${CMAKE_CURRENT_SOURCE_DIR}/src/windows/hal_src.cmake")
+else()
+    message(FATAL_ERROR "HAL_PLATFORM environment variable is not specified!")
+endif()
 
 set(INCS
    "include"
 )
 
-add_library(${PROJECT_NAME})
+add_library(${PROJECT_NAME} STATIC)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCS})
-target_sources(${PROJECT_NAME} PUBLIC ${SRCS} )
+target_sources(${PROJECT_NAME} PUBLIC ${HAL_SRC} )
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

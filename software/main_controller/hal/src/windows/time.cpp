@@ -7,12 +7,12 @@
  //
  // *************************************************************************
 
+#include <windows.h>
+#include <stdio.h>
 #include "hal/time.hpp"
 
- /* defines */
-
- /* code */
  void Delay(uint64_t ms)
  {
-
+    printf("%s(%lld)\n", __FUNCTION__, ms);
+    Sleep(ms);
  }

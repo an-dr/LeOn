@@ -17,6 +17,9 @@ class MotorController
 public:
     static const uint8_t m_DefaultSpeed = 128U;
 
+    int32_t m_linearSpeed;
+    int32_t m_angularSpeed;
+
     MotorController();
     void MoveForward(uint8_t Speed = m_DefaultSpeed);
     void MoveBack(uint8_t Speed = m_DefaultSpeed);
@@ -25,4 +28,5 @@ public:
     void Stop();
 
 private:
+    void _ApplySpeed();
 };

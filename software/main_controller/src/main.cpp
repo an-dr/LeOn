@@ -8,6 +8,7 @@
 
 int main(int argc, char *argv[])
 {
+    printf("Hello\n");
     MotorController motor_controller;
     while(1){
         motor_controller.MoveForward();
