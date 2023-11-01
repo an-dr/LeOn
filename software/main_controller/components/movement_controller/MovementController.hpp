@@ -10,9 +10,8 @@
 #pragma once
 
 #include <stdint.h>
-// includes
 
-class MotorController
+class MovementController
 {
 public:
     static const uint8_t m_DefaultSpeed = 128U;
@@ -20,7 +19,7 @@ public:
     int32_t m_linearSpeed;
     int32_t m_angularSpeed;
 
-    MotorController();
+    MovementController();
     void MoveForward(uint8_t Speed = m_DefaultSpeed);
     void MoveBack(uint8_t Speed = m_DefaultSpeed);
     void MoveLeft(uint8_t Speed = m_DefaultSpeed);
@@ -30,3 +29,5 @@ public:
 private:
     void _ApplySpeed();
 };
+
+extern MovementController move_controller;

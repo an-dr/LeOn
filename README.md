@@ -16,4 +16,4 @@ Blog: <https://hackaday.io/project/192732-leon>
 
 ## Architecture
 
-Architecture is described using [arc42](https://arc42.org/) template. See [docs/architecture-arc42.md](docs/architecture-arc42.md) for details.
+Architecture is described using [arc42](https://arc42.org/) template. See [architecture-arc42.pdf](docs/generated/architecture-arc42.pdf) for details.

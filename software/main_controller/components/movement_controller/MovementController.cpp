@@ -7,45 +7,48 @@
 //
 // *************************************************************************
 
-#include "MotorController.hpp"
+#include "MovementController.hpp"
 #include "hal/movement.hpp"
 
-MotorController::MotorController() : m_angularSpeed(0), m_linearSpeed(0)
+MovementController::MovementController() : m_angularSpeed(0), m_linearSpeed(0)
 {
 }
 
-void MotorController::MoveForward(uint8_t Speed)
+void MovementController::MoveForward(uint8_t Speed)
 {
     m_linearSpeed = Speed;
     _ApplySpeed();
 }
 
-void MotorController::MoveBack(uint8_t Speed)
+void MovementController::MoveBack(uint8_t Speed)
 {
     m_linearSpeed = -Speed;
     _ApplySpeed();
 }
 
-void MotorController::MoveLeft(uint8_t Speed)
+void MovementController::MoveLeft(uint8_t Speed)
 {
     m_angularSpeed = -Speed;
     _ApplySpeed();
 }
 
-void MotorController::MoveRight(uint8_t Speed)
+void MovementController::MoveRight(uint8_t Speed)
 {
     m_angularSpeed = Speed;
     _ApplySpeed();
 }
 
-void MotorController::Stop()
+void MovementController::Stop()
 {
     m_angularSpeed = 0;
     m_linearSpeed = 0;
     _ApplySpeed();
 }
 
-void MotorController::_ApplySpeed()
+void MovementController::_ApplySpeed()
 {
-    SetSpeed(m_linearSpeed, 0, 0, 0, 0, m_angularSpeed);
+    hal_SetSpeed(m_linearSpeed, 0, 0, 0, 0, m_angularSpeed);
 }
+
+
+MovementController move_controller;
