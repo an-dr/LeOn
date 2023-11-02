@@ -3,12 +3,14 @@
 #include <stdio.h>
 
 #include "hal/time.hpp"
+#include "hal/motion.hpp"
 #include "movement_interface/movement_interface.hpp"
 
 
 int main(int argc, char *argv[])
 {
     printf("Hello\n");
+    hal_SetMotionMode(MOTION_MODE_1);
     while(1){
         mi_MoveX(100);
         mi_RotateZ(100);
