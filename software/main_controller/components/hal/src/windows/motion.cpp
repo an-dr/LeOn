@@ -10,10 +10,8 @@
 #include <stdio.h>
 #include "hal/motion.hpp"
 
-/* defines */
 
-/* code */
-void hal_SetMotionMode(motion_mode_t mode)
+void hal::SetMotionMode(motion_mode_t mode)
 {
-    printf("hal_SetMotionMode: %d\n", mode);
+    printf("SetMotionMode: %d\n", mode);
 }

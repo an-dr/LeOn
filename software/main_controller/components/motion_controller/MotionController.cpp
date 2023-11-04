@@ -10,9 +10,9 @@
 #include "MotionController.hpp"
 #include "hal/motion.hpp"
 
-void MotionController::SetMode(motion_mode_t mode)
+void MotionController::SetMode(hal::motion_mode_t mode)
 {
-    hal_SetMotionMode(mode);
+    SetMotionMode(mode);
 }
 
 MotionController *MotionController::GetInstance()

@@ -6,6 +6,8 @@
 #include "MovementClient.hpp"
 #include "MotionController.hpp"
 
+using namespace hal;
+
 int main(int argc, char *argv[])
 {
     printf("Hello\n");
@@ -17,11 +19,11 @@ int main(int argc, char *argv[])
     {
         move_client.MoveX(100);
         move_client.RotateZ(100);
-        hal_Delay(4000);
+        Delay(4000);
         move_client.Stop();
-        hal_Delay(1000);
+        Delay(1000);
         move_client.RotateZ(-100);
-        hal_Delay(3000);
+        Delay(3000);
         move_client.Stop();
     }
 }

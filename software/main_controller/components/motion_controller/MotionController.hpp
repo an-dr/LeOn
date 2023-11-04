@@ -23,5 +23,5 @@ public:
     void operator=(const MotionController &) = delete;
 
     static MotionController *GetInstance();
-    void SetMode(motion_mode_t mode);
+    void SetMode(hal::motion_mode_t mode);
 };

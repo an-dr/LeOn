@@ -17,7 +17,7 @@ MovementController::MovementController() :
 
 void MovementController::MoveForward(uint8_t Speed)
 {
-m_linearSpeed = Speed;
+    m_linearSpeed = Speed;
     _ApplySpeed();
 }
 
@@ -56,8 +56,7 @@ void MovementController::Stop()
 
 void MovementController::_ApplySpeed()
 {
-    hal_SetSpeed(m_linearSpeed, 0, 0, 0, 0, m_angularSpeed);
+    hal::SetSpeed(m_linearSpeed, 0, 0, 0, 0, m_angularSpeed);
 }
 
-// init the pointer
 MovementController *MovementController::m_instance = nullptr;
