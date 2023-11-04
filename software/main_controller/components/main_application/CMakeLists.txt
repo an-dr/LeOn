@@ -19,6 +19,6 @@
  add_library(${PROJECT_NAME} STATIC)
  target_include_directories(${PROJECT_NAME} PUBLIC ".")
  target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp )
- target_link_libraries(${PROJECT_NAME} PUBLIC hal movement_interface)
+ target_link_libraries(${PROJECT_NAME} PUBLIC hal movement_client motion_controller)
 
  install(TARGETS ${PROJECT_NAME} DESTINATION bin)

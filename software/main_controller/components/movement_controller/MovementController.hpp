@@ -13,21 +13,28 @@
 
 class MovementController
 {
+protected:
+
+    static const uint8_t DEFAULT_SPEED = 128U;
+    static MovementController * m_instance;
+
+    MovementController();
+    void _ApplySpeed();
+
 public:
-    static const uint8_t m_DefaultSpeed = 128U;
 
     int32_t m_linearSpeed;
     int32_t m_angularSpeed;
 
-    MovementController();
-    void MoveForward(uint8_t Speed = m_DefaultSpeed);
-    void MoveBack(uint8_t Speed = m_DefaultSpeed);
-    void MoveLeft(uint8_t Speed = m_DefaultSpeed);
-    void MoveRight(uint8_t Speed = m_DefaultSpeed);
-    void Stop();
+    // Remove for singleton safety
+    MovementController(MovementController &other) = delete;
+    void operator=(const MovementController &) = delete;
 
-private:
-    void _ApplySpeed();
+    static MovementController *GetInstance();
+    void MoveForward(uint8_t Speed = DEFAULT_SPEED);
+    void MoveBack(uint8_t Speed = DEFAULT_SPEED);
+    void MoveLeft(uint8_t Speed = DEFAULT_SPEED);
+    void MoveRight(uint8_t Speed = DEFAULT_SPEED);
+    void Stop();
 };
 
-extern MovementController move_controller;

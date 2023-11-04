@@ -9,7 +9,7 @@
 
 #pragma once
 
-typedef enum {
+typedef enum motion_mode_enum {
     MOTION_DISABLE = 0,
     MOTION_MODE_1,
     MOTION_MODE_2

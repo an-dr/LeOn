@@ -16,11 +16,22 @@ project(app_main)
 
 add_executable(${PROJECT_NAME})
 
+# Add Components
+# --------------
+
+# Hardware
 add_subdirectory(components/hal)
-add_subdirectory(components/movement_controller)
+# Software
 add_subdirectory(components/movement_interface)
+add_subdirectory(components/movement_controller)
+add_subdirectory(components/movement_client)
+
+add_subdirectory(components/motion_controller)
+# Main
 add_subdirectory(components/main_application)
 
+# Assemble
+# --------
 target_link_libraries(${PROJECT_NAME} PRIVATE main_application)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

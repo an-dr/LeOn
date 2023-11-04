@@ -17,11 +17,11 @@
 void mi_MoveX(int8_t Speed)
 {
     if (Speed > 0) {
-        move_controller.MoveForward(Speed);
+        MovementController::GetInstance()->MoveForward(Speed);
     } else if (Speed < 0) {
-        move_controller.MoveBack(-Speed);
+        MovementController::GetInstance()->MoveBack(-Speed);
     } else {
-        move_controller.MoveForward(0);
+        MovementController::GetInstance()->MoveForward(0);
     }
 }
 
@@ -49,15 +49,15 @@ void mi_RotateY(int8_t Speed)
 void mi_RotateZ(int8_t Speed)
 {
     if (Speed > 0) {
-        move_controller.MoveRight(Speed);
+        MovementController::GetInstance()->MoveRight(Speed);
     } else if (Speed < 0) {
-        move_controller.MoveLeft(-Speed);
+        MovementController::GetInstance()->MoveLeft(-Speed);
     } else {
-        move_controller.MoveRight(0);
+        MovementController::GetInstance()->MoveRight(0);
     }
 }
 
 void mi_Stop()
 {
-    move_controller.Stop();
+    MovementController::GetInstance()->Stop();
 }

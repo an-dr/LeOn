@@ -3,22 +3,25 @@
 #include <stdio.h>
 
 #include "hal/time.hpp"
-#include "hal/motion.hpp"
-#include "movement_interface/movement_interface.hpp"
-
+#include "MovementClient.hpp"
+#include "MotionController.hpp"
 
 int main(int argc, char *argv[])
 {
     printf("Hello\n");
-    hal_SetMotionMode(MOTION_MODE_1);
-    while(1){
-        mi_MoveX(100);
-        mi_RotateZ(100);
+    MotionController *motion = MotionController::GetInstance();
+    MovementClient move_client;
+
+    motion->SetMode(MOTION_MODE_1);
+    while (1)
+    {
+        move_client.MoveX(100);
+        move_client.RotateZ(100);
         hal_Delay(4000);
-        mi_Stop();
+        move_client.Stop();
         hal_Delay(1000);
-        mi_RotateZ(-100);
+        move_client.RotateZ(-100);
         hal_Delay(3000);
-        mi_Stop();
+        move_client.Stop();
     }
 }

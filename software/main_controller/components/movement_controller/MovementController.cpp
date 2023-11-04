@@ -10,13 +10,14 @@
 #include "MovementController.hpp"
 #include "hal/movement.hpp"
 
-MovementController::MovementController() : m_angularSpeed(0), m_linearSpeed(0)
+MovementController::MovementController() :
+    m_angularSpeed(0), m_linearSpeed(0)
 {
 }
 
 void MovementController::MoveForward(uint8_t Speed)
 {
-    m_linearSpeed = Speed;
+m_linearSpeed = Speed;
     _ApplySpeed();
 }
 
@@ -38,6 +39,14 @@ void MovementController::MoveRight(uint8_t Speed)
     _ApplySpeed();
 }
 
+MovementController *MovementController::GetInstance()
+{
+    if (m_instance == nullptr) {
+        m_instance = new MovementController();
+    }
+return m_instance;
+}
+
 void MovementController::Stop()
 {
     m_angularSpeed = 0;
@@ -50,5 +59,5 @@ void MovementController::_ApplySpeed()
     hal_SetSpeed(m_linearSpeed, 0, 0, 0, 0, m_angularSpeed);
 }
 
-
-MovementController move_controller;
+// init the pointer
+MovementController *MovementController::m_instance = nullptr;
