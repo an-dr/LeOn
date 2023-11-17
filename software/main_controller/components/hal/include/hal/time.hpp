@@ -13,4 +13,5 @@
 namespace hal
 {
     void Delay(uint64_t ms);
+    uint64_t GetUptime_ms();
 } // namespace hal
