@@ -39,5 +39,15 @@
             "HAL_PLATFORM": "windows"
         },
         "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-vscode.cpptools",
+            "twxs.cmake",
+            "ms-vscode.cmake-tools",
+            "vsciot-vscode.vscode-arduino",
+            "GoogleCloudTools.cloudcode",
+            "ms-vscode.cpptools-extension-pack"
+        ]
     }
 }

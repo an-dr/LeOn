@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+        {
+            "path": "../..",
+            "name": "Repository Root"
+        }
+    ],
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+
+        ]
+    },
+    "settings": {
+        "C_Cpp.default.compileCommands": "${workspaceFolder}/.pio/build/compile_commands.json",
+    },
+    "extensions": {
+        "recommendations": [
+            "platformio.platformio-ide"
+        ],
+        "unwantedRecommendations": [
+            "vsciot-vscode.vscode-arduino",
+            "GoogleCloudTools.cloudcode",
+            "ms-vscode.cpptools-extension-pack"
+        ]
+    }
+}
