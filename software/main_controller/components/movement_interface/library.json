@@ -1,0 +1,9 @@
+{
+    "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+    "name": "movement_interface",
+    "build": {
+        "includeDir": "include",
+        "srcDir": "src/arduino/"
+    },
+    "dependencies": [ "hal" ]
+}

@@ -12,13 +12,13 @@
 
  cmake_minimum_required(VERSION 3.5)
  set(CMAKE_CXX_STANDARD 14)
- project(movement_client)
+ project(main_win)
 
- find_library(${PROJECT_NAME} movement_interface)
+ find_library(${PROJECT_NAME} app)
 
  add_library(${PROJECT_NAME} STATIC)
- target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
- target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/MovementClient.cpp )
- target_link_libraries(${PROJECT_NAME} PUBLIC movement_interface)
+ target_include_directories(${PROJECT_NAME} PUBLIC ".")
+ target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp )
+ target_link_libraries(${PROJECT_NAME} PUBLIC app)
 
  install(TARGETS ${PROJECT_NAME} DESTINATION bin)

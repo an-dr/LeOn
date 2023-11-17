@@ -8,7 +8,7 @@
 
 using namespace hal;
 
-int main(int argc, char *argv[])
+int app()
 {
     printf("Hello\n");
     MotionController *motion = MotionController::GetInstance();

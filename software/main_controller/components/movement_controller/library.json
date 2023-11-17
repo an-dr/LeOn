@@ -1,0 +1,10 @@
+// PIO library
+{
+    "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+    "name": "movement_controller",
+    "build": {
+        "includeDir": ".",
+        "srcDir": "."
+    },
+    "dependencies": [ "hal" ]
+}
