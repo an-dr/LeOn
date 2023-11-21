@@ -7,11 +7,8 @@
 //
 // *************************************************************************
 
-#include <stdio.h>
-#include "hal/motion.hpp"
+#include "hal/arduino/MovingPlatform.hpp"
 
-
-void hal::SetMotionMode(motion_mode_t mode)
+void MovingPlatform::SetSpeed(int8_t x, int8_t y, int8_t z, int8_t angX, int8_t angY, int8_t angZ)
 {
-    printf("SetMotionMode: %d\n", mode);
 }

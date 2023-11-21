@@ -8,7 +8,7 @@
 // *************************************************************************
 
 #include <Arduino.h>
-#include "ll_DcMotor.hpp"
+#include "DcMotor.hpp"
 
 DcMotor::DcMotor(int pin_a, int pin_b)
     : m_pin_a(pin_a), m_pin_b(pin_b)

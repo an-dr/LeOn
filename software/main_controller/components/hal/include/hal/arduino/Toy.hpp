@@ -9,16 +9,18 @@
 
 #pragma once
 
-#include <Arduino.h>
+#include "hal/IToy.hpp"
 
-class DcMotor
+class DcMotor;
+
+class Toy : public hal::IToy
 {
-    int m_pin_a;
-    int m_pin_b;
+private:
+    DcMotor * m_motor;
 
 public:
-    DcMotor() = default;
-    DcMotor(int pin_a, int pin_b);
-    void DcMotor::Move(bool clockwise, uint32_t speed);
-    void DcMotor::Stop();
+    virtual void MoveLeft(uint32_t speed);
+    virtual void MoveRight(uint32_t speed);
+    virtual void Stop();
+    Toy();
 };
