@@ -9,11 +9,16 @@
 
 #pragma once
 
-// Forward declarations
-namespace hal
-{
-    class IToy;
-    class IMovingPlatform;
-}
+#include <Arduino.h>
 
-int app(hal::IToy &toy, hal::IMovingPlatform &platform);
+class DcMotor
+{
+    int m_pin_a;
+    int m_pin_b;
+
+public:
+    DcMotor() = default;
+    DcMotor(int pin_a, int pin_b);
+    void DcMotor::Move(bool clockwise, uint32_t speed);
+    void DcMotor::Stop();
+};

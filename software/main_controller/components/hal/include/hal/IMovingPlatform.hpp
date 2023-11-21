@@ -7,11 +7,18 @@
 //
 // *************************************************************************
 
-#include <stdio.h>
-#include "hal/motion.hpp"
+#pragma once
 
+#include <stdint.h>
 
-void hal::SetMotionMode(motion_mode_t mode)
+namespace hal
 {
-    printf("SetMotionMode: %d\n", mode);
-}
+
+    class IMovingPlatform
+    {
+    public:
+        virtual void SetSpeed(int8_t x, int8_t y, int8_t z,
+                              int8_t angX, int8_t angY, int8_t angZ) = 0;
+    };
+
+} // namespace hal

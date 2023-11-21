@@ -10,21 +10,15 @@
 #pragma once
 
 #include <stdint.h>
+#include "hal/IToy.hpp"
 
-class MovementClient
+class VirtualToy : public hal::IToy
 {
 private:
-    /* data */
+    int64_t m_speed;
 public:
-    MovementClient() = default;
-
-    void MoveX(int8_t Speed);
-    void MoveY(int8_t Speed);
-    void MoveZ(int8_t Speed);
-
-    void RotateX(int8_t Speed);
-    void RotateY(int8_t Speed);
-    void RotateZ(int8_t Speed);
-
-    void Stop();
+    virtual void MoveLeft(uint32_t speed);
+    virtual void MoveRight(uint32_t speed);
+    virtual void Stop();
+    VirtualToy() = default;
 };

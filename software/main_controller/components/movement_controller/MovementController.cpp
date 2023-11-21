@@ -8,7 +8,6 @@
 // *************************************************************************
 
 #include "MovementController.hpp"
-#include "hal/movement.hpp"
 
 MovementController::MovementController() :
     m_angularSpeed(0), m_linearSpeed(0)
@@ -56,7 +55,7 @@ void MovementController::Stop()
 
 void MovementController::_ApplySpeed()
 {
-    hal::SetSpeed(m_linearSpeed, 0, 0, 0, 0, m_angularSpeed);
+    // hal::SetSpeed(m_linearSpeed, 0, 0, 0, 0, m_angularSpeed);
 }
 
 MovementController *MovementController::m_instance = nullptr;

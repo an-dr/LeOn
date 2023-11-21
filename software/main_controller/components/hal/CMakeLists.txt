@@ -16,7 +16,7 @@ project(hal)
 
 message(STATUS "HAL_PLATFORM Env: $ENV{HAL_PLATFORM}")
 if("$ENV{HAL_PLATFORM}" STREQUAL "windows")
-    include("${CMAKE_CURRENT_SOURCE_DIR}/src/windows/hal_src.cmake")
+    include(${CMAKE_CURRENT_SOURCE_DIR}/windows.cmake)
 elseif("$ENV{HAL_PLATFORM}" STREQUAL "arduino")
     message(FATAL_ERROR "Use PlatformIO to build for Arduino!")
 else()
@@ -24,6 +24,7 @@ else()
 endif()
 
 set(INCS
+    ${HAL_INC}
    "include"
 )
 

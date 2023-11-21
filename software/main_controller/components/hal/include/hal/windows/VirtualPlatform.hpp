@@ -9,22 +9,11 @@
 
 #pragma once
 
-#include <stdint.h>
+#include "hal/IMovingPlatform.hpp"
 
-class MovementClient
+class VirtualPlatform : public hal::IMovingPlatform
 {
-private:
-    /* data */
 public:
-    MovementClient() = default;
-
-    void MoveX(int8_t Speed);
-    void MoveY(int8_t Speed);
-    void MoveZ(int8_t Speed);
-
-    void RotateX(int8_t Speed);
-    void RotateY(int8_t Speed);
-    void RotateZ(int8_t Speed);
-
-    void Stop();
+    virtual void SetSpeed(int8_t x, int8_t y, int8_t z, int8_t angX, int8_t angY, int8_t angZ);
+    VirtualPlatform() = default;
 };

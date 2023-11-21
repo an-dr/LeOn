@@ -7,13 +7,11 @@
 //
 // *************************************************************************
 
-#pragma once
+#include <stdio.h>
+#include "hal/windows/VirtualPlatform.hpp"
 
-// Forward declarations
-namespace hal
+
+void VirtualPlatform::SetSpeed(int8_t x, int8_t y, int8_t z, int8_t angX, int8_t angY, int8_t angZ)
 {
-    class IToy;
-    class IMovingPlatform;
+    printf("SetSpeed: %d %d %d | %d %d %d\n", x, y, z, angX, angY, angZ);
 }
-
-int app(hal::IToy &toy, hal::IMovingPlatform &platform);

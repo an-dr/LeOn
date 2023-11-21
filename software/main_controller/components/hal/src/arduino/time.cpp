@@ -14,3 +14,9 @@ void hal::Delay(uint64_t ms)
 {
     delay(ms);
 }
+
+
+uint64_t hal::GetUptime_ms()
+{
+    return static_cast<uint64_t>(millis());
+}

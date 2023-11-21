@@ -14,11 +14,11 @@
  set(CMAKE_CXX_STANDARD 14)
  project(main_win)
 
- find_library(${PROJECT_NAME} app)
+ find_library(${PROJECT_NAME} app hal)
 
  add_library(${PROJECT_NAME} STATIC)
  target_include_directories(${PROJECT_NAME} PUBLIC ".")
  target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp )
- target_link_libraries(${PROJECT_NAME} PUBLIC app)
+ target_link_libraries(${PROJECT_NAME} PUBLIC app hal)
 
  install(TARGETS ${PROJECT_NAME} DESTINATION bin)

@@ -9,13 +9,16 @@
 
 #pragma once
 
-#include "hal/motion.hpp"
+#include <stdint.h>
 
 class MotionController
 {
+private:
+    uint64_t m_last_time;
+
 protected:
     static MotionController *m_instance;
-    MotionController() = default;
+    MotionController();
 
 public:
     // Remove for singleton safety
@@ -23,5 +26,6 @@ public:
     void operator=(const MotionController &) = delete;
 
     static MotionController *GetInstance();
-    void SetMode(hal::motion_mode_t mode);
+    void MotionTaskOnce(void *arg);
+    // void SetMode(hal::motion_mode_t mode);
 };

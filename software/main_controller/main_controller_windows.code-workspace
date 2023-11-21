@@ -45,8 +45,10 @@
             "ms-vscode.cpptools",
             "twxs.cmake",
             "ms-vscode.cmake-tools",
-            "vsciot-vscode.vscode-arduino",
-            "GoogleCloudTools.cloudcode",
+            "ms-vscode.cpptools-extension-pack"
+        ],
+        "unwantedRecommendations": [
+            "platformio.platformio-ide",
             "ms-vscode.cpptools-extension-pack"
         ]
     }

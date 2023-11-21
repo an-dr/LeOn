@@ -3,27 +3,31 @@
 #include <stdio.h>
 
 #include "hal/time.hpp"
-#include "MovementClient.hpp"
-#include "MotionController.hpp"
+#include "hal/IToy.hpp"
+#include "hal/IMovingPlatform.hpp"
 
 using namespace hal;
 
-int app()
+int app(IToy &toy, IMovingPlatform &platform)
 {
-    printf("Hello\n");
-    MotionController *motion = MotionController::GetInstance();
-    MovementClient move_client;
+    printf("Start in: %lld ms\n", GetUptime_ms());
 
-    motion->SetMode(MOTION_MODE_1);
+    platform.SetSpeed(0, 0, 0, 0, 0, 127);
+
+    uint64_t last_time = GetUptime_ms();
     while (1)
     {
-        move_client.MoveX(100);
-        move_client.RotateZ(100);
-        Delay(4000);
-        move_client.Stop();
-        Delay(1000);
-        move_client.RotateZ(-100);
-        Delay(3000);
-        move_client.Stop();
+        uint64_t now = GetUptime_ms();
+        if ((now - last_time > 3000) &&
+            (now - last_time <= 3400))
+        {
+            toy.MoveRight(127);
+        }
+
+        if (now - last_time > 3400)
+        {
+            toy.Stop();
+            last_time = now;
+        }
     }
 }
