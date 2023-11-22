@@ -1,7 +1,6 @@
 // Copyright (c) 2021 Andrei Gramakov. All rights reserved.
 
 #include <stdio.h>
-#include <Arduino.h>
 
 
 #include "hal/time.hpp"
@@ -10,7 +9,7 @@
 
 using namespace hal;
 
-int app(IToy &toy, IMovingPlatform &platform)
+int app(IToy &toy, IMovingPlatform &platform, uint32_t period_ms)
 {
     // printf("Start in: %ld ms\n", GetUptime_ms());
 
@@ -36,6 +35,6 @@ int app(IToy &toy, IMovingPlatform &platform)
             toy.Stop();
             last_time = GetUptime_ms();
         }
-        Delay(1);
+        Delay(period_ms);
     }
 }

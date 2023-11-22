@@ -8,6 +8,7 @@
 // *************************************************************************
 
 #pragma once
+#include <stdint.h>
 
 // Forward declarations
 namespace hal
@@ -16,4 +17,4 @@ namespace hal
     class IMovingPlatform;
 }
 
-int app(hal::IToy &toy, hal::IMovingPlatform &platform);
+int app(hal::IToy &toy, hal::IMovingPlatform &platform, uint32_t period_ms = 1U);

@@ -8,5 +8,5 @@ int main(int argc, char *argv[])
 {
     VirtualToy toy;
     VirtualPlatform platform;
-    app(toy, platform);
+    app(toy, platform, 500);
 }
