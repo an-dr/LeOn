@@ -17,6 +17,7 @@ namespace hal
     class IMovingPlatform
     {
     public:
+        virtual void taskOnce() = 0;
         virtual void SetSpeed(int8_t x, int8_t y, int8_t z,
                               int8_t angX, int8_t angY, int8_t angZ) = 0;
     };

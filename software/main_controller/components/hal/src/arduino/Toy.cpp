@@ -13,14 +13,19 @@
 
 void Toy::MoveLeft(uint32_t speed)
 {
+    m_motor->Move(true, speed);
 }
 
 void Toy::MoveRight(uint32_t speed)
 {
+    m_motor->Move(false, speed);
 }
+
 void Toy::Stop()
 {
+    m_motor->Stop();
 }
+
 Toy::Toy():
     m_motor(new DcMotor(pin::DC_MOTOR_PINA, pin::DC_MOTOR_PINB)){
 }
