@@ -1,6 +1,5 @@
 // Includes the Arduino Stepper Library
 #include <Stepper.h>
-#include <CheapStepper.h>
 
 // Defines the number of steps per rotation
 const int stepsPerRevolution = 2038;

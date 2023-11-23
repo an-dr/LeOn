@@ -12,26 +12,9 @@
 
 cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_STANDARD 14)
-project(main_controller)
+project(hal_interface)
 
-add_executable(${PROJECT_NAME})
-
-# Add Components
-# --------------
-#Interface
-
-# Hardware
-add_subdirectory(components/hardware/hal_interface)
-add_subdirectory(components/hardware/hal_windows)
-
-# Software
-add_subdirectory(components/software/app)
-
-# Main
-add_subdirectory(components/main/main_win)
-
-# Assemble
-# --------
-target_link_libraries(${PROJECT_NAME} PRIVATE main_win)
+add_library(${PROJECT_NAME} INTERFACE)
+target_include_directories(${PROJECT_NAME} INTERFACE include)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

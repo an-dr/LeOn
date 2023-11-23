@@ -19,6 +19,7 @@
     },
     "settings": {
         "C_Cpp.default.compileCommands": "${workspaceFolder}/.pio/build/compile_commands.json",
+        "todo-tree.tree.scanMode": "workspace only",
     },
     "extensions": {
         "recommendations": [
