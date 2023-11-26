@@ -15,7 +15,7 @@
 class VirtualToy : public hal::IToy
 {
 private:
-    int64_t m_speed;
+    int32_t m_speed;
 public:
     virtual void MoveLeft(uint32_t speed);
     virtual void MoveRight(uint32_t speed);

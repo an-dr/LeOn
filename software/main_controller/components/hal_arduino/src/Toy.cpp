@@ -25,6 +25,9 @@ void Toy::Stop()
     m_motor->Stop();
 }
 
-Toy::Toy(const int pinA, const int pinB):
-    m_motor(new DcMotor(pinA, pinB)){
+
+void Toy::InitArduino(const int pin_a, const int pin_b)
+{
+    m_motor = new DcMotor;
+    m_motor->Init(pin_a, pin_b);
 }

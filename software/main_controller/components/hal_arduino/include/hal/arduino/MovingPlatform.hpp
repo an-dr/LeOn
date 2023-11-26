@@ -15,9 +15,8 @@
 class MovingPlatform : public hal::IMovingPlatform
 {
 private:
-    const int STEPS_PER_REVOLUTION = 2038;
-    Stepper StepperR = Stepper(STEPS_PER_REVOLUTION, 8, 10, 9, 11);
-    Stepper StepperL = Stepper(STEPS_PER_REVOLUTION, 4, 6, 5, 7);
+    Stepper *m_motor_l;
+    Stepper *m_motor_r;
 
     // Move to the parent
     int8_t m_x;
@@ -27,7 +26,6 @@ private:
     int8_t m_angY;
     int8_t m_angZ;
 
-
     // Can be local
     bool m_left_direction;
     int32_t m_left_speed;
@@ -36,7 +34,9 @@ private:
 
 public:
     virtual void taskOnce();
-
+    virtual void InitArduino(int steps_per_revolution,
+                             int pin_left_1, int pin_left_2, int pin_left_3, int pin_left_4,
+                             int pin_right_1, int pin_right_2, int pin_right_3, int pin_right_4);
     virtual void SetSpeed(int8_t x, int8_t y, int8_t z, int8_t angX, int8_t angY, int8_t angZ);
     MovingPlatform() = default;
 };

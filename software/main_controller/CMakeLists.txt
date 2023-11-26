@@ -21,14 +21,14 @@ add_executable(${PROJECT_NAME})
 #Interface
 
 # Hardware
-add_subdirectory(components/hardware/hal_interface)
-add_subdirectory(components/hardware/hal_windows)
+add_subdirectory(components/hal_interface)
+add_subdirectory(components/hal_windows)
 
 # Software
-add_subdirectory(components/software/app)
+add_subdirectory(components/sw_app)
 
 # Main
-add_subdirectory(components/main/main_win)
+add_subdirectory(components/main_win)
 
 # Assemble
 # --------

@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 
-
 #include "hal/interface/time.hpp"
 #include "hal/interface/IToy.hpp"
 #include "hal/interface/IMovingPlatform.hpp"
@@ -11,7 +10,6 @@ using namespace hal;
 
 int app(IToy &toy, IMovingPlatform &platform, uint32_t period_ms)
 {
-
     platform.SetSpeed(0, 0, 0, 0, 0, 10);
 
     uint32_t last_time = GetUptime_ms();

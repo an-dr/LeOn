@@ -7,8 +7,9 @@
 //
 // *************************************************************************
 
+#include <stdio.h>
+
 #include "hal/windows/VirtualToy.hpp"
-#include "stdio.h"
 
 void VirtualToy::MoveLeft(uint32_t speed)
 {

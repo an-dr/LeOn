@@ -8,5 +8,7 @@ int main(int argc, char *argv[])
 {
     VirtualToy toy;
     VirtualPlatform platform;
+
+    platform.InitWindows("Hello from platform.InitWindows");
     app(toy, platform, 500);
 }

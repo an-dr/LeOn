@@ -22,5 +22,5 @@ public:
     virtual void MoveLeft(uint32_t speed);
     virtual void MoveRight(uint32_t speed);
     virtual void Stop();
-    Toy(const int pinA, const int pinB);
+    virtual void InitArduino(const int pin_a, const int pin_b);
 };

@@ -18,7 +18,7 @@ class DcMotor
 
 public:
     DcMotor() = default;
-    DcMotor(int pin_a, int pin_b);
+    void Init(int pin_a, int pin_b);
     void Move(bool clockwise, uint32_t speed);
     void Stop();
 };

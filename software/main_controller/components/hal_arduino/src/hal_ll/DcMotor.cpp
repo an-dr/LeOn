@@ -11,13 +11,15 @@
 #include <stdio.h>
 #include "DcMotor.hpp"
 
-DcMotor::DcMotor(int pin_a, int pin_b)
-    : m_pin_a(pin_a), m_pin_b(pin_b)
+void DcMotor::Init(int pin_a, int pin_b)
 {
-    printf("DcMotor::DcMotor(%d, %d)\n", pin_a, pin_b);
+    m_pin_a = pin_a;
+    m_pin_b = pin_b;
     pinMode(m_pin_a, OUTPUT);
     pinMode(m_pin_b, OUTPUT);
 };
+
+
 
 void DcMotor::Move(bool clockwise, uint32_t speed)
 {

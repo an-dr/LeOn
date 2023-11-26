@@ -13,10 +13,10 @@
 
 namespace hal
 {
-    // [] define API for HAL
     class IToy
     {
     public:
+        IToy() = default;
         virtual void MoveLeft(uint32_t speed) = 0;
         virtual void MoveRight(uint32_t speed) = 0;
         virtual void Stop() = 0;
