@@ -7,17 +7,16 @@
 //
 // *************************************************************************
 
-#include <chrono>
-#include <windows.h>
-#include <stdio.h>
-#include "hal/interface/time.hpp"
+#pragma once
+#include <stdint.h>
 
-void hal::Delay(uint32_t ms)
+// Forward declarations
+namespace hal
 {
-    // printf("%s(%u)\n", __FUNCTION__, ms);
-    Sleep(ms);
+    class IMovingPlatform;
+    class IToy;
 }
 
-uint32_t hal::GetUptime_ms(){
-    return std::chrono::milliseconds(GetTickCount()).count();
-}
+int app(hal::IToy &toy, hal::IMovingPlatform &platform, uint32_t period_ms = 1U);
+
+extern uint32_t now;

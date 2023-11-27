@@ -10,5 +10,5 @@ int main(int argc, char *argv[])
     VirtualPlatform platform;
 
     platform.InitWindows("Hello from platform.InitWindows");
-    app(toy, platform, 500);
+    app(toy, platform, 1);
 }

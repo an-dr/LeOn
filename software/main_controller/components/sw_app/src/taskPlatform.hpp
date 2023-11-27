@@ -7,17 +7,10 @@
 //
 // *************************************************************************
 
-#include <chrono>
-#include <windows.h>
-#include <stdio.h>
-#include "hal/interface/time.hpp"
+#pragma once
 
-void hal::Delay(uint32_t ms)
-{
-    // printf("%s(%u)\n", __FUNCTION__, ms);
-    Sleep(ms);
+namespace hal{
+    class IMovingPlatform;
 }
 
-uint32_t hal::GetUptime_ms(){
-    return std::chrono::milliseconds(GetTickCount()).count();
-}
+void taskOncePlatform(hal::IMovingPlatform &platform);

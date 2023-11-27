@@ -17,8 +17,11 @@
  find_library(${PROJECT_NAME} hal_interface movement_interface)
 
  add_library(${PROJECT_NAME} STATIC)
- target_include_directories(${PROJECT_NAME} PUBLIC ".")
- target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/app.cpp )
+ target_include_directories(${PROJECT_NAME} PUBLIC "src")
+ target_sources(${PROJECT_NAME} PUBLIC
+                "${CMAKE_CURRENT_SOURCE_DIR}/src/app.cpp"
+                "${CMAKE_CURRENT_SOURCE_DIR}/src/taskPlatform.cpp"
+                )
  target_link_libraries(${PROJECT_NAME} PUBLIC hal_interface)
 
  install(TARGETS ${PROJECT_NAME} DESTINATION bin)
